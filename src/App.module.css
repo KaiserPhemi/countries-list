@@ -1,0 +1,27 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  scroll-behavior: smooth;
+}
+
+a {
+  color: unset;
+  text-decoration: none;
+}
+
+.App {
+  padding: 2rem 4rem;
+}
+
+.app_header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.country_list {
+  display: grid;
+  grid-gap: 5rem;
+  grid-template-columns: repeat(4, 1fr);
+  margin: 4rem 0;
+}

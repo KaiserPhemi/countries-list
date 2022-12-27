@@ -1,12 +1,12 @@
 import * as React from "react";
 
 // styles
-import "./navbar.css";
+import styles from "./navbar.module.css";
 
 // navbar component
 const Navbar = () => {
   return (
-    <div className="countries__navbar">
+    <div className={styles.countries_navbar}>
       <div>
         <p>Where in the world?</p>
       </div>

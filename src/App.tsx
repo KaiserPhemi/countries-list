@@ -1,27 +1,41 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
+
+// components
+import { Navbar, SearchBar, Filter, Country } from "./components";
 
 // styles
-import "./App.css";
+import styles from "./App.module.css";
 
 // api
 import { fetchCountries } from "./api";
 
 // main app component
 const App = () => {
-  /**
-   * Fetch countries
-   */
+  const [countries, setCountries] = useState([]);
+
+  // fetch countries on render
   useEffect(() => {
     const fetchData = async () => {
       const result = await fetchCountries.fetchAll();
-      console.log("the result", result.data);
+      setCountries(result.data);
     };
     fetchData();
   }, []);
 
   return (
-    <div className="App">
-      <p>We got here</p>
+    <div className={styles.App}>
+      <Navbar />
+      <div className={styles.app_header}>
+        <SearchBar />
+        <Filter />
+      </div>
+      <div className={styles.country_list}>
+        {countries.length > 0
+          ? countries.map((country: any, index: number) => (
+              <Country key={index} country={country} />
+            ))
+          : "No countries listed"}
+      </div>
     </div>
   );
 };
