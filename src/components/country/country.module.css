@@ -5,6 +5,7 @@
   border-radius: 6px;
   border: 0;
   min-height: 400px;
+  cursor: pointer;
 }
 
 .country_flag {

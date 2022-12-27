@@ -5,10 +5,10 @@ import React from "react";
 import styles from "./country.module.css";
 
 // country thumbnail component
-const Country = ({country}: any) => {
-  const countryCapital = country.capital ? country.capital[0]: "N/A";
+const Country = ({ country, onClick }: any) => {
+  const countryCapital = country.capital ? country.capital[0] : "N/A";
   return (
-    <div className={styles.country}>
+    <div onClick={onClick} className={styles.country}>
       <div className={styles.country_flag}>
         <img src={country.flags.svg} alt="flag" />
       </div>

@@ -22,6 +22,10 @@ const App = () => {
     fetchData();
   }, []);
 
+  const handleClick = (name: string) => {
+    console.log("we clicked: ", name);
+  };
+
   return (
     <div className={styles.App}>
       <Navbar />
@@ -32,7 +36,11 @@ const App = () => {
       <div className={styles.country_list}>
         {countries.length > 0
           ? countries.map((country: any, index: number) => (
-              <Country key={index} country={country} />
+              <Country
+                key={index}
+                country={country}
+                onClick={() => handleClick(country.name.common)}
+              />
             ))
           : "No countries listed"}
       </div>

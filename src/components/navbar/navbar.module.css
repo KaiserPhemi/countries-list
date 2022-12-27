@@ -1,3 +1,28 @@
 .countries_navbar {
-  
+  position: fixed;
+  box-shadow: 0 8px 6px -6px rgba(0, 0, 0, 0.1);
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem 4rem;
+  background: #fff;
+}
+
+.logo {
+  font-size: 2rem;
+  font-weight: 800;
+}
+
+.theme_switch {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+
+.theme_switch  p {
+  margin-left: 6px;
 }

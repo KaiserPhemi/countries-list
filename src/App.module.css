@@ -11,17 +11,27 @@ a {
 }
 
 .App {
-  padding: 2rem 4rem;
+  padding: 0 4rem;
 }
 
 .app_header {
   display: flex;
   justify-content: space-between;
+  margin: 8rem 0 4rem;
 }
 
 .country_list {
   display: grid;
   grid-gap: 5rem;
   grid-template-columns: repeat(4, 1fr);
-  margin: 4rem 0;
+  margin: 0 0 4rem;
+}
+
+@media screen and (max-width: 450px) {
+  .country_list {
+    display: grid;
+    grid-gap: 4rem;
+    grid-template-columns: repeat(1, 1fr);
+    margin: 0 0 4rem;
+  }
 }
