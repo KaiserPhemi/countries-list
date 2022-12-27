@@ -35,3 +35,13 @@ a {
     margin: 0 0 4rem;
   }
 }
+
+
+@media screen and (max-width: 750px) {
+  .country_list {
+    display: grid;
+    grid-gap: 4rem;
+    grid-template-columns: repeat(2, 1fr);
+    margin: 0 0 4rem;
+  }
+}

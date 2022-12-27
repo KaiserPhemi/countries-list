@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from "react";
 
+// third-party libraries
+import {AiOutlineLoading} from 'react-icons/ai';
+
 // components
 import { Navbar, SearchBar, Filter, Country } from "./components";
 
@@ -34,15 +37,17 @@ const App = () => {
         <Filter />
       </div>
       <div className={styles.country_list}>
-        {countries.length > 0
-          ? countries.map((country: any, index: number) => (
-              <Country
-                key={index}
-                country={country}
-                onClick={() => handleClick(country.name.common)}
-              />
-            ))
-          : "No countries listed"}
+        {countries.length > 0 ? (
+          countries.map((country: any, index: number) => (
+            <Country
+              key={index}
+              country={country}
+              onClick={() => handleClick(country.name.common)}
+            />
+          ))
+        ) : (
+          <AiOutlineLoading />
+        )}
       </div>
     </div>
   );

@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Countries List",
+  "name": "Countries list with theme switcher",
   "icons": [
     {
       "src": "favicon.ico",
