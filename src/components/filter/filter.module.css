@@ -39,6 +39,7 @@
 }
 
 .filter_list {
+  position: absolute;;
   width: 12rem;
   border-radius: 6px;
   display: flex;
