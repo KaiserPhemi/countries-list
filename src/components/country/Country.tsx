@@ -8,7 +8,7 @@ import styles from "./country.module.css";
 const Country = ({ country, onClick }: any) => {
   const countryCapital = country.capital ? country.capital[0] : "N/A";
   return (
-    <div onClick={onClick} className={styles.country}>
+    <div onClick={onClick} title="country" className={styles.country}>
       <div className={styles.country_flag}>
         <img
           className={styles.country_flag_img}

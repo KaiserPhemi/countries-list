@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from "react";
-
-// third-party libraries
-import PuffLoader from "react-spinners/PuffLoader";
+import { Routes, Route, BrowserRouter, redirect } from "react-router-dom";
 
 // components
-import { Navbar, SearchBar, Filter, Country } from "./components";
+import { Navbar, CountryDetail, Home } from "./components";
 
 // styles
 import styles from "./App.module.css";
@@ -16,6 +14,7 @@ import { fetchCountries } from "./api";
 const App = () => {
   const [countries, setCountries] = useState([]);
   const [region, setRegion] = useState("");
+  const [selectedCountry, setSelectedCountry] = useState({});
 
   /**
    * Makes API call
@@ -49,42 +48,37 @@ const App = () => {
   }, [region]);
 
   /**
-   * Handles clicking a country
-   * @param name
+   * Sets the selected country
+   * @param country
+   * @returns
    */
-  const handleClick = (name: string) => {
-    console.log("Country Selected: ", name);
+  const selectCountry = (country: any) => {
+    setSelectedCountry(country);
+    console.log("selectedd", country);
+    return redirect("/country");
   };
 
   return (
     <div className={styles.App}>
-      <Navbar />
-      <div className={styles.app_header}>
-        <SearchBar />
-        <Filter onSelect={setRegion} />
-      </div>
-      <div className={styles.country_list}>
-        {countries.length > 0 ? (
-          countries.map((country: any, index: number) => (
-            <Country
-              key={index}
-              country={country}
-              onClick={() => handleClick(country.name.common)}
-            />
-          ))
-        ) : (
-          <PuffLoader
-            color="blue"
-            size={150}
-            cssOverride={{
-              display: "inline-block",
-              position: "absolute",
-              top: "50%",
-              left: "45%",
-            }}
+      <BrowserRouter>
+        <Navbar />
+        <Routes>
+          <Route
+            path="/country"
+            element={<CountryDetail country={selectedCountry} />}
           />
-        )}
-      </div>
+          <Route
+            path="/"
+            element={
+              <Home
+                setRegion={setRegion}
+                countryList={countries}
+                handleClick={selectCountry}
+              />
+            }
+          />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 };
