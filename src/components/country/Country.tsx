@@ -10,7 +10,11 @@ const Country = ({ country, onClick }: any) => {
   return (
     <div onClick={onClick} className={styles.country}>
       <div className={styles.country_flag}>
-        <img src={country.flags.svg} alt="flag" />
+        <img
+          className={styles.country_flag_img}
+          src={country.flags.svg}
+          alt="flag"
+        />
       </div>
       <div className={styles.country_data}>
         <h3>{country.name.common}</h3>

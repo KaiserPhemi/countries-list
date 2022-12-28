@@ -10,6 +10,42 @@ export const fetchCountries = {
    * Fetches all countries
    */
   async fetchAll() {
-    return await axios.get(`${BASE_URL}/all`)
+    try {
+      return await axios.get(`${BASE_URL}/all`)
+    } catch (error: any) {
+      console.log(`${error.message}`);
+    }
+  },
+
+  /**
+   * Fetch countries by region
+   * @param region 
+   * @returns 
+   */
+  async fetchByRegion(region: string) {
+    try {
+      if (region === null || region === undefined || region === "") {
+        return await this.fetchAll()
+      }
+      return await axios.get(`${BASE_URL}/region/${region}`)
+    } catch (error: any) {
+      console.log(`${error.message}`);
+    }
+  },
+
+  /**
+   * Search for a country
+   * @param searchString
+   * @returns 
+   */
+  async searchCountry(searchString: string) {
+    try {
+      if (searchString === null || searchString === undefined || searchString === "") {
+        return await this.fetchAll()
+      }
+      return await axios.get(`${BASE_URL}/name/${searchString}`)
+    } catch (error: any) {
+      console.log(`${error.message}`);
+    }
   }
 } 

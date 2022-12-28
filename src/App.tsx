@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 // third-party libraries
-import {AiOutlineLoading} from 'react-icons/ai';
+import PuffLoader from "react-spinners/PuffLoader";
 
 // components
 import { Navbar, SearchBar, Filter, Country } from "./components";
@@ -15,18 +15,45 @@ import { fetchCountries } from "./api";
 // main app component
 const App = () => {
   const [countries, setCountries] = useState([]);
+  const [region, setRegion] = useState("");
+
+  /**
+   * Makes API call
+   * @returns
+   */
 
   // fetch countries on render
   useEffect(() => {
-    const fetchData = async () => {
-      const result = await fetchCountries.fetchAll();
-      setCountries(result.data);
+    const fetchAll = async () => {
+      try {
+        const result: any = await fetchCountries.fetchAll();
+        setCountries(result.data);
+      } catch (error: any) {
+        console.log(`${error.message}`);
+      }
     };
-    fetchData();
+    fetchAll();
   }, []);
 
+  // fetch countries by region on render
+  useEffect(() => {
+    const fetchByRegion = async () => {
+      try {
+        const result: any = await fetchCountries.fetchByRegion(region);
+        setCountries(result.data);
+      } catch (error: any) {
+        console.log(`${error.message}`);
+      }
+    };
+    fetchByRegion();
+  }, [region]);
+
+  /**
+   * Handles clicking a country
+   * @param name
+   */
   const handleClick = (name: string) => {
-    console.log("we clicked: ", name);
+    console.log("Country Selected: ", name);
   };
 
   return (
@@ -34,7 +61,7 @@ const App = () => {
       <Navbar />
       <div className={styles.app_header}>
         <SearchBar />
-        <Filter />
+        <Filter onSelect={setRegion} />
       </div>
       <div className={styles.country_list}>
         {countries.length > 0 ? (
@@ -46,7 +73,12 @@ const App = () => {
             />
           ))
         ) : (
-          <AiOutlineLoading />
+          <PuffLoader
+            color="#ddd"
+            size={200}
+            cssOverride={{ margin: "0 auto" }}
+            speedMultiplier={2}
+          />
         )}
       </div>
     </div>
