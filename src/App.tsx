@@ -54,7 +54,6 @@ const App = () => {
    */
   const selectCountry = (country: any) => {
     setSelectedCountry(country);
-    console.log("selectedd", country);
     return redirect("/country");
   };
 

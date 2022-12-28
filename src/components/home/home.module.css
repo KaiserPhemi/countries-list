@@ -1,3 +1,5 @@
+.home_page {
+}
 .app_header {
   display: flex;
   justify-content: space-between;
@@ -11,20 +13,27 @@
   margin: 0 0 4rem;
 }
 
-@media screen and (max-width: 450px) {
+@media screen and (max-width: 375px) {
   .country_list {
     display: grid;
-    grid-gap: 4rem;
-    grid-template-columns: repeat(1, 1fr);
+    grid-gap: 6rem;
+    grid-template-columns: auto;
     margin: 0 0 4rem;
+  }
+
+  .app_header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 8rem 0 4rem;
   }
 }
 
-@media screen and (max-width: 750px) {
+@media screen and (max-width: 500px) {
   .country_list {
     display: grid;
     grid-gap: 4rem;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: auto;
     margin: 0 0 4rem;
   }
 }
