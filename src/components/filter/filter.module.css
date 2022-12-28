@@ -1,3 +1,65 @@
 .filter_tab {
-  
+  padding: 1rem;
+  border-radius: 6px;
+  font-family: inherit;
+  font-size: inherit;
+  box-shadow: 0px 6px 52px -3px rgba(0, 0, 0, 0.1);
+}
+
+.filter_tab_item {
+  width: 9rem;
+  outline: none;
+  border: 0;
+  cursor: pointer;
+  background: #fff;
+}
+
+.filter_tab_item option {
+  background: #fff;
+  color: blue;
+}
+
+.filter_wrapper {
+}
+
+.filter_header {
+  cursor: pointer;
+  width: 12rem;
+  border-radius: 6px;
+  box-shadow: 0px 6px 52px -3px rgba(0, 0, 0, 0.1);
+  margin-bottom: 0.3rem;
+  background: #fff;
+}
+
+.filter_header_title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+}
+
+.filter_list {
+  width: 12rem;
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  font-family: inherit;
+  box-shadow: 0px 6px 52px -3px rgba(0, 0, 0, 0.1);
+  background: #fff;
+}
+
+.filter_list_item {
+  border-radius: 6px;
+  cursor: pointer;
+  outline: none;
+  font-family: inherit;
+  font-size: inherit;
+  border: 0;
+  text-align: start;
+  padding: 1rem;
+  background: inherit;
+}
+
+.filter_list_item:hover {
+  font-weight: 600;
 }

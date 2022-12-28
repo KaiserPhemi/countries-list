@@ -74,10 +74,14 @@ const App = () => {
           ))
         ) : (
           <PuffLoader
-            color="#ddd"
-            size={200}
-            cssOverride={{ margin: "0 auto" }}
-            speedMultiplier={2}
+            color="blue"
+            size={150}
+            cssOverride={{
+              display: "inline-block",
+              position: "absolute",
+              top: "50%",
+              left: "45%",
+            }}
           />
         )}
       </div>
