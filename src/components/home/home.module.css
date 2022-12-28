@@ -6,7 +6,7 @@
 
 .country_list {
   display: grid;
-  grid-gap: 5rem;
+  grid-gap: 4rem;
   grid-template-columns: repeat(4, 1fr);
   margin: 0 0 4rem;
 }
