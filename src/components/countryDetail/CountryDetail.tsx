@@ -10,6 +10,7 @@ import styles from "./country.module.css";
 // country detail component
 const CountryDetail = ({ country }: any) => {
   console.log("inside", country);
+
   return (
     <div className={styles.country_detail}>
       <Link to="/">
@@ -18,33 +19,37 @@ const CountryDetail = ({ country }: any) => {
           <button type="button">Back</button>
         </section>
       </Link>
-      <section>
-        <section></section>
-        <section>
+      <section className={styles.details_section}>
+        <section className={styles.details_section_flag}>
+          <img src={country.flags.svg || country.flags.png} alt="flag" />
+        </section>
+        <section className={styles.details_section_data}>
           <h2>{country.name.common}</h2>
-          <section>
-            <dl>
-              <dt>Native Name</dt>
-              <dd></dd>
-              <dt>Population</dt>
-              <dd></dd>
-              <dt>Region</dt>
-              <dd></dd>
-              <dt>Sub Region</dt>
-              <dd></dd>
-              <dt>Capital</dt>
-              <dd>{country.capital[0]}</dd>
-              <dt>Top Level Domain</dt>
-              <dd>{country.tld[0]}</dd>
-              <dt>Currency</dt>
-              <dd>
-                {country.currencies[Object.keys(country.currencies)[0]].name}
-              </dd>
-              <dt>Languages</dt>
-              <dd>{country.languages[Object.keys(country.languages)[0]]}</dd>
-              <dt></dt>
-              <dd></dd>
-            </dl>
+          <section className="">
+            <section className="">
+              <dl>
+                <dt>Native Name</dt>
+                <dd></dd>
+                <dt>Population</dt>
+                <dd>{country.population.toLocaleString("en-US")}</dd>
+                <dt>Region</dt>
+                <dd>{country.region}</dd>
+                <dt>Sub Region</dt>
+                <dd></dd>
+                <dt>Capital</dt>
+                <dd>{country.capital[0] || country.capital}</dd>
+              </dl>
+            </section>
+            <section className="">
+              <dl>
+                <dt>Top Level Domain</dt>
+                <dd>{country.tld[0]}</dd>
+                <dt>Currency</dt>
+                <dd></dd>
+                <dt>Languages</dt>
+                <dd></dd>
+              </dl>
+            </section>
           </section>
           <section>
             Border Countries:
