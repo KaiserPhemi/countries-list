@@ -1,3 +1,13 @@
+:root {
+  --dark-mode-bg: #202C37;
+  --dark-mode-text: #FFFFFF;
+  --dark-mode-items: #2B3945;
+  --light-mode-text: #111517;
+  --light-mode-input: #858585;
+  --light-mode-bg: #FAFAFA;
+  --light-mode-items:#FFFFFF;
+}
+
 body {
   margin: 0;
   font-family: 'Nunito Sans', sans-serif;
