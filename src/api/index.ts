@@ -47,5 +47,21 @@ export const fetchCountries = {
     } catch (error: any) {
       console.log(`${error.message}`);
     }
+  },
+
+  /**
+   * Search for country by code
+   * @param searchString 
+   * @returns 
+   */
+  async searchByCode(searchString: string) {
+    try {
+      if (searchString === null || searchString === undefined || searchString === "") {
+        return await this.fetchAll()
+      }
+      return await axios.get(`${BASE_URL}/alpha/${searchString}`)
+    } catch (error: any) {
+      console.log(`${error.message}`);
+    }
   }
 } 

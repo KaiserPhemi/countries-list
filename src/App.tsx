@@ -64,7 +64,7 @@ const App = () => {
         <Routes>
           <Route
             path="/country"
-            element={<CountryDetail country={selectedCountry} />}
+            element={<CountryDetail selectedCountry={selectedCountry} />}
           />
           <Route
             path="/"

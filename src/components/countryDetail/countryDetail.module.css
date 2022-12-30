@@ -2,7 +2,6 @@
   display: flex;
   flex-direction: column;
   margin: 8rem 0 4rem;
-
 }
 
 .cta_back {
@@ -29,7 +28,7 @@
 }
 
 .details_section {
-  display: flex; 
+  display: flex;
   align-items: center;
   margin: 6rem 0;
   column-gap: 6rem;
@@ -38,7 +37,6 @@
 .details_section_flag {
   width: 50%;
   height: 100%;
-  box-shadow: 0px 0px 11px -5px rgba(0, 0, 0, 0.1);
 }
 
 .details_section_flag img {
@@ -46,6 +44,7 @@
   height: 100%;
   object-fit: cover;
   border-radius: 4px;
+  box-shadow: 0px 0px 7px 6px rgba(0, 0, 0, 0.1);
 }
 
 .details_section_data {
@@ -92,8 +91,9 @@ dd {
 .border_countries_item {
   cursor: pointer;
   padding: 0.2rem 0.8rem;
-  margin: 0 1rem;
+  margin: 0 0.2rem;
   border: 0;
+  min-width: 5.5rem;
   outline: none;
   box-shadow: 0px 0px 5px 3px rgba(0, 0, 0, 0.1);
   border-radius: 4px;
