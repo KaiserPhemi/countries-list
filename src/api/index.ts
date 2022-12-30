@@ -54,12 +54,12 @@ export const fetchCountries = {
    * @param searchString 
    * @returns 
    */
-  async searchByCode(searchString: string) {
+  async searchByCode(codes: string) {
     try {
-      if (searchString === null || searchString === undefined || searchString === "") {
+      if (codes === null || codes === undefined || codes === "") {
         return await this.fetchAll()
       }
-      return await axios.get(`${BASE_URL}/alpha/${searchString}`)
+      return await axios.get(`${BASE_URL}/alpha?codes=${codes}`)
     } catch (error: any) {
       console.log(`${error.message}`);
     }

@@ -9,22 +9,32 @@ import PuffLoader from "react-spinners/PuffLoader";
 // styles
 import styles from "./countryDetail.module.css";
 
+// api
+import { fetchCountries } from "../../api";
+
 // country detail component
 const CountryDetail = ({ selectedCountry }: any) => {
-  const [borderCountry, setBorderCountry] = useState({});
+  const [borderCountries, setBorderCountries] = useState([]);
   const [country, setCountry] = useState(selectedCountry);
 
-  // useEffect(() => {
-  //   console.log("logged");
-  // }, []);
+  // fetchs border countries on render
+  useEffect(() => {
+    const fetchByCodes = async () => {
+      try {
+        if (!country.borders) {
+          setBorderCountries([]);
+        } else {
+          const codes = country.borders.join(",");
+          const result: any = await fetchCountries.searchByCode(codes);
+          setBorderCountries(result.data);
+        }
+      } catch (error: any) {
+        console.log(`${error.message}`);
+      }
+    };
+    fetchByCodes();
+  }, [country]);
 
-  const handleBorderSelection = (evt: any, item: string) => {
-    console.log("clicked", item);
-    // fetch country information
-    // set state
-  };
-
-  console.log("logged border: ", country);
   return (
     <div className={styles.country_detail}>
       <Link to="/">
@@ -51,7 +61,6 @@ const CountryDetail = ({ selectedCountry }: any) => {
               }}
             />
           )}
-
           <section className={styles.details_section_data}>
             <h2>{country.name.common}</h2>
             <section className={styles.country_data}>
@@ -93,17 +102,17 @@ const CountryDetail = ({ selectedCountry }: any) => {
             </section>
             <section className={styles.border_countries_list}>
               <p>{`Border Countries: `}</p>
-              {country.borders
-                ? country.borders.map((item: any, index: number) => (
+              {borderCountries && borderCountries.length > 0
+                ? borderCountries.map((item: any, index: number) => (
                     <button
                       key={index}
-                      onClick={(evt: any) => handleBorderSelection(evt, item)}
+                      onClick={() => setCountry(item)}
                       className={styles.border_countries_item}
                     >
-                      {item}
+                      {item.name.common}
                     </button>
                   ))
-                : "N/A"}
+                : " N/A"}
             </section>
           </section>
         </section>
