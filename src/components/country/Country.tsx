@@ -1,14 +1,25 @@
 // react libraries
-import React from "react";
+import { useContext } from "react";
 
 // styles
 import styles from "./country.module.css";
 
+// context
+import { ThemeContext } from "../../context/ThemeContext";
+
 // country thumbnail component
 const Country = ({ country, onClick }: any) => {
+  const { toggle }: any = useContext(ThemeContext);
   const countryCapital = country.capital ? country.capital[0] : "N/A";
+
   return (
-    <div onClick={onClick} title="country" className={styles.country}>
+    <div
+      onClick={onClick}
+      title="country"
+      className={`${styles.country} ${
+        toggle ? styles.dark_theme : styles.light_theme
+      }`}
+    >
       <div className={styles.country_flag}>
         <img
           className={styles.country_flag_img}

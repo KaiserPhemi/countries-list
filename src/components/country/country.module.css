@@ -39,3 +39,13 @@
 .country_data dt::after {
   content: ": ";
 }
+
+.light_theme {
+  background: var(--light-mode-bg);
+  color: var(--light-mode-text);
+}
+
+.dark_theme {
+  background: var(--dark-mode-items);
+  color: var(--dark-mode-text);
+}

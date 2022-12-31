@@ -1,8 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Routes, Route, BrowserRouter, redirect } from "react-router-dom";
 
 // components
 import { Navbar, CountryDetail, Home } from "./components";
+
+// context
+import { ThemeContext } from "./context/ThemeContext";
 
 // styles
 import styles from "./App.module.css";
@@ -12,6 +15,8 @@ import { fetchCountries } from "./api";
 
 // main app component
 const App = () => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const { toggle }: any = useContext(ThemeContext);
   const [countries, setCountries] = useState([]);
   const [region, setRegion] = useState("");
   const [selectedCountry, setSelectedCountry] = useState({});
@@ -56,30 +61,34 @@ const App = () => {
     setSelectedCountry(country);
     return redirect("/country");
   };
-
-  return (
-    <div className={styles.App}>
-      <BrowserRouter>
-        <Navbar />
-        <Routes>
-          <Route
-            path="/country"
-            element={<CountryDetail selectedCountry={selectedCountry} />}
-          />
-          <Route
-            path="/"
-            element={
-              <Home
-                setRegion={setRegion}
-                countryList={countries}
-                handleClick={selectCountry}
-              />
-            }
-          />
-        </Routes>
-      </BrowserRouter>
-    </div>
-  );
+  
+return (
+  <div
+    className={`${styles.App} ${
+      toggle ? styles.dark_theme : styles.light_theme
+    }`}
+  >
+    <BrowserRouter>
+      <Navbar />
+      <Routes>
+        <Route
+          path="/country"
+          element={<CountryDetail selectedCountry={selectedCountry} />}
+        />
+        <Route
+          path="/"
+          element={
+            <Home
+              setRegion={setRegion}
+              countryList={countries}
+              handleClick={selectCountry}
+            />
+          }
+        />
+      </Routes>
+    </BrowserRouter>
+  </div>
+);
 };
 
 export default App;

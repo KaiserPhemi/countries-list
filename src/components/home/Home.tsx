@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { Link } from "react-router-dom";
 
 // third-party libraries
@@ -13,8 +13,12 @@ import { SearchBar, Filter, Country } from "../index";
 // api
 import { fetchCountries } from "../../api";
 
+// context
+import { ThemeContext } from "../../context/ThemeContext";
+
 //
 const Home = ({ countryList, handleClick, setRegion }: any) => {
+  const { toggle }: any = useContext(ThemeContext);
   const [countries, setCountries] = useState([]);
   const [query, setQuery] = useState("");
 
@@ -47,8 +51,16 @@ const Home = ({ countryList, handleClick, setRegion }: any) => {
   };
 
   return (
-    <div className={styles.home_page}>
-      <div className={styles.app_header}>
+    <div
+      className={`${styles.home_page}  ${
+        toggle ? styles.dark_theme : styles.light_theme
+      }`}
+    >
+      <div
+        className={`${styles.app_header}  ${
+          toggle ? styles.dark_theme : styles.light_theme
+        }`}
+      >
         <SearchBar
           onChange={handleChange}
           onSubmit={handleSearch}
@@ -65,13 +77,17 @@ const Home = ({ countryList, handleClick, setRegion }: any) => {
           ))
         ) : (
           <PuffLoader
-            color="blue"
             size={150}
             cssOverride={{
-              display: "inline-block",
               position: "absolute",
+              height: "100%",
+              width: "100%",
+              margin: "auto",
               top: "50%",
-              left: "45%",
+              right: "0",
+              left: "0",
+              color: `${toggle ? "#FAFAFA" : "#111517"}`,
+              background: `${toggle ? "#202C37" : "#FAFAFA"}`,
             }}
           />
         )}

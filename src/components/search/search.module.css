@@ -28,5 +28,22 @@
 
 .search_bar_input::placeholder {
   font-family: inherit;
+  color: inherit;
   font-size: 1rem;
+}
+
+.light_theme {
+  background: var(--light-mode-bg);
+  color: var(--light-mode-text);
+}
+
+.dark_theme {
+  background: var(--dark-mode-items);
+  color: var(--dark-mode-text);
+}
+
+@media screen and (max-width: 500px) {
+  .search_bar {
+    width: 100%;
+  }
 }

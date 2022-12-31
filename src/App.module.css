@@ -5,11 +5,28 @@
   scroll-behavior: smooth;
 }
 
+.App {
+  padding: 6rem 4rem 12rem;
+  height: 100%;
+}
+
+.light_theme {
+  background: var(--light-mode-bg);
+  color: var(--light-mode-text);
+}
+
+.dark_theme {
+  background: var(--dark-mode-bg);
+  color: var(--dark-mode-text);
+}
+
 a {
   color: unset;
   text-decoration: none;
 }
 
-.App {
-  padding: 0 4rem;
+@media screen and (max-width: 500px) {
+  .App {
+    padding: 6rem 2rem 12rem;
+  }
 }

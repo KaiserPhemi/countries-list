@@ -1,5 +1,5 @@
 // react libraries
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { Link } from "react-router-dom";
 
 // third party libraries
@@ -12,8 +12,12 @@ import styles from "./countryDetail.module.css";
 // api
 import { fetchCountries } from "../../api";
 
+// context
+import { ThemeContext } from "../../context/ThemeContext";
+
 // country detail component
 const CountryDetail = ({ selectedCountry }: any) => {
+  const { toggle }: any = useContext(ThemeContext);
   const [borderCountries, setBorderCountries] = useState([]);
   const [country, setCountry] = useState(selectedCountry);
 
@@ -38,9 +42,18 @@ const CountryDetail = ({ selectedCountry }: any) => {
   return (
     <div className={styles.country_detail}>
       <Link to="/">
-        <section className={styles.cta_back}>
+        <section
+          className={`${styles.cta_back} ${
+            toggle ? styles.dark_theme : styles.light_theme
+          }`}
+        >
           <FiArrowLeft strokeWidth={3} />
-          <button type="button">Back</button>
+          <button
+            className={`${toggle ? styles.dark_theme : styles.light_theme}`}
+            type="button"
+          >
+            Back
+          </button>
         </section>
       </Link>
       {country ? (
@@ -102,17 +115,21 @@ const CountryDetail = ({ selectedCountry }: any) => {
             </section>
             <section className={styles.border_countries_list}>
               <p>{`Border Countries: `}</p>
-              {borderCountries && borderCountries.length > 0
-                ? borderCountries.map((item: any, index: number) => (
-                    <button
-                      key={index}
-                      onClick={() => setCountry(item)}
-                      className={styles.border_countries_item}
-                    >
-                      {item.name.common}
-                    </button>
-                  ))
-                : " N/A"}
+              <section className={styles.list_wrapper}>
+                {borderCountries && borderCountries.length > 0
+                  ? borderCountries.map((item: any, index: number) => (
+                      <button
+                        key={index}
+                        onClick={() => setCountry(item)}
+                        className={`${styles.border_countries_item} ${
+                          toggle ? styles.dark_theme : styles.light_theme
+                        }`}
+                      >
+                        {item.name.common}
+                      </button>
+                    ))
+                  : " N/A"}
+              </section>
             </section>
           </section>
         </section>

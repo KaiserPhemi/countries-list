@@ -2,6 +2,8 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 
+// context
+import { ThemeProvider } from "./context/ThemeContext";
 
 // styles
 import "./index.css";
@@ -16,10 +18,13 @@ import { register } from "./serviceWorkerRegistration";
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
+
 root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+  <ThemeProvider>
+    <React.StrictMode>
+      <App />
+    </React.StrictMode>
+  </ThemeProvider>
 );
 
 // If you want to start measuring performance in your app, pass a function
